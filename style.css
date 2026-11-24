@@ -62,6 +62,20 @@ body {
    box-shadow: inset 0 0 1.2vmin #0f172a80;
 }
 
+.body::after {
+   content: "";
+   position: absolute;
+   z-index: 2;
+   inset: 14% 15%;
+   border-radius: 30%;
+   background:
+      radial-gradient(circle at 5% 8%, #f8fafc 0 2%, #334155 2.8% 6%, transparent 7%),
+      radial-gradient(circle at 95% 8%, #f8fafc 0 2%, #334155 2.8% 6%, transparent 7%),
+      radial-gradient(circle at 5% 92%, #f8fafc 0 2%, #334155 2.8% 6%, transparent 7%),
+      radial-gradient(circle at 95% 92%, #f8fafc 0 2%, #334155 2.8% 6%, transparent 7%);
+   pointer-events: none;
+}
+
 .wing {
    width: 20%;
    height: 30%;
@@ -73,6 +87,8 @@ body {
    border: 0.7vmin solid #334155;
    border-radius: 70% 12% 65% 18%;
    background:
+      radial-gradient(circle at 30% 78%, #f8fafc 0 3%, #334155 4% 7%, transparent 8%),
+      radial-gradient(circle at 77% 75%, #f8fafc 0 3%, #334155 4% 7%, transparent 8%),
       radial-gradient(circle at 23% 20%, #e0f2fe 0 3%, #475569 3.5% 6%, transparent 6.5%),
       linear-gradient(145deg, #e2e8f0 0%, #94a3b8 38%, #475569 78%);
    box-shadow: inset 0 0 0 0.5vmin #cbd5e1, 0 0 1.2vmin #22d3ee45;
@@ -185,15 +201,14 @@ body {
 }
 
 .beak {
-   width: 4vmin;
-   height: 3vmin;
+   width: 4.5vmin;
+   height: 3.2vmin;
    top: 61%;
    left: 50%;
    z-index: 3;
-   border-top: 1.5vmin solid transparent;
-   border-bottom: 1.5vmin solid transparent;
-   border-left: 4vmin solid var(--orange1);
-   filter: drop-shadow(0 0 0.5vmin #fb923c);
+   background: linear-gradient(145deg, #f8fafc 0%, #cbd5e1 38%, #64748b 100%);
+   clip-path: polygon(0 0, 100% 50%, 0 100%);
+   filter: drop-shadow(0 0 0.35vmin #e2e8f0);
 }
 
 .red {
@@ -311,7 +326,7 @@ body {
    box-shadow: 0 0 0.7vmin white;
 }
 
-/* ORIGINAL LEGS AND 13-PIECE TAIL, RECOLORED AS ENERGY PANELS */
+/* ORIGINAL LEGS AND FEET WITH A METALLIC COPPER FINISH */
 .leg {
    width: 3%;
    height: 21%;
@@ -321,7 +336,7 @@ body {
    border: 0.35vmin solid #7c2d12;
    border-radius: 5vmin / 50%;
    background-image:
-      linear-gradient(to bottom, transparent 0 44%, #334155 44% 48%, #cbd5e1 48% 53%, #334155 53% 57%, transparent 57%),
+      linear-gradient(to bottom, transparent 0 43%, #7c2d12 43% 47%, #fed7aa 47% 53%, #7c2d12 53% 57%, transparent 57%),
       repeating-linear-gradient(transparent 0 10%, #7c2d1240 0 11%),
       linear-gradient(90deg, #c2410c, #fb923c 45%, #c2410c);
 }
@@ -340,14 +355,19 @@ body {
    bottom: 0;
    transform: translate(-50%, 0) rotate(30deg);
    transform-origin: 50% 0;
+   border: 0.25vmin solid #7c2d12;
    border-radius: 5vmin;
-   background: var(--orange1);
+   background:
+      linear-gradient(to bottom, transparent 0 20%, #7c2d12 20% 27%, transparent 27%),
+      linear-gradient(145deg, #fed7aa, #fb923c 48%, #c2410c);
+   box-shadow: inset 0 0 0.35vmin #fff7ed;
 }
 
 .leg::after {
    transform: translate(-50%, 0) rotate(-30deg);
 }
 
+/* WARM METALLIC ENERGY FEATHERS WITH SILVER HIGHLIGHTS */
 .tail {
    width: 10%;
    height: 40%;
@@ -359,7 +379,7 @@ body {
    border: 0.7vmin solid #334155;
    border-radius: 100% / 30% 30% 170% 170%;
    background: linear-gradient(145deg, #22d3ee, #2563eb 58%, #312e81);
-   box-shadow: inset 0 0 0 0.5vmin #bfdbfe, 0 0 1vmin #22d3ee80;
+   box-shadow: inset 0 0 0 0.5vmin #f8fafc, 0 0 1vmin #94a3b880;
    transition: filter 400ms ease;
 }
 
@@ -371,16 +391,34 @@ body {
    top: 10%;
    left: 41%;
    border-radius: 1vmin;
-   background: linear-gradient(transparent, #e0f2fe, transparent);
-   box-shadow: 0 0 0.8vmin #22d3ee;
+   background: linear-gradient(transparent, #f8fafc, transparent);
+   box-shadow: 0 0 0.8vmin #cbd5e180;
+}
+
+.tail::after {
+   content: "";
+   position: absolute;
+   width: 1.2vmin;
+   height: 1.2vmin;
+   top: 53%;
+   left: 26%;
+   transform: translateX(-50%);
+   border: 0.25vmin solid #334155;
+   border-radius: 50%;
+   background: #e2e8f0;
+   box-shadow: 0 0 0.3vmin #fff;
 }
 
 .tail:nth-child(odd) {
-   background: linear-gradient(145deg, #67e8f9, #0891b2 58%, #164e63);
+   background: linear-gradient(145deg, #f2c9c7 0%, #c96a66 18%, #8d393c 38%, #d7b1ac 49%, #7d3036 61%, #421f24 82%, #bd7355 100%);
 }
 
 .tail:nth-child(even) {
-   background: linear-gradient(145deg, #c4b5fd, #6366f1 58%, #312e81);
+   background: linear-gradient(145deg, #f3d0b1 0%, #d18a58 18%, #8d5739 38%, #d9c0a3 49%, #985b34 61%, #483127 82%, #c47942 100%);
+}
+
+.tail:nth-child(3n) {
+   background: linear-gradient(145deg, #f3e5b3 0%, #c9a83b 18%, #846b28 38%, #e0d2a3 49%, #8c7327 61%, #44391e 82%, #b38b38 100%);
 }
 
 .tail:nth-child(1) { transform: translate(-50%, 0) rotate(0); }
@@ -416,7 +454,7 @@ body {
 }
 
 .cartoon:hover .tail {
-   filter: brightness(1.25);
+   filter: hue-rotate(18deg) saturate(1.05) brightness(1.06);
 }
 
 @keyframes robot-float {
