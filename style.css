@@ -1,0 +1,458 @@
+/* PAGE SETUP */
+html,
+body {
+   min-height: 100%;
+   margin: 0;
+   overflow: hidden;
+   background:
+      radial-gradient(ellipse at 50% 45%, #1e3a5f 0%, #0b1728 58%, #050a12 100%);
+   color: #e0f2fe;
+   font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+/* ORIGINAL TURKEY CANVAS */
+.cartoon {
+   --brown1: #94a3b8;
+   --brown2: #64748b;
+   --orange1: #f97316;
+   --orange2: #fb923c;
+   --cyan: #22d3ee;
+   width: min(80vmin, 720px);
+   height: min(80vmin, 720px);
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   z-index: 1;
+   transform: translate(-50%, -50%);
+   animation: robot-float 3.2s ease-in-out infinite;
+}
+
+.cartoon div {
+   position: absolute;
+   box-sizing: border-box;
+}
+
+/* METALLIC BODY AND ARMOR */
+.body {
+   width: 40%;
+   height: 40%;
+   top: 40%;
+   left: 50%;
+   transform: translate(-50%, 0);
+   border: 0.8vmin solid #334155;
+   border-radius: 42%;
+   background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 35%, #475569 72%, #cbd5e1 100%);
+   box-shadow:
+      inset 0 0 0 0.7vmin #cbd5e1,
+      0 0 2vmin #22d3ee70,
+      -4vmin 14.5vmin 0 -13vmin #475569,
+      4vmin 14.5vmin 0 -13vmin #475569;
+}
+
+.body::before {
+   content: "";
+   position: absolute;
+   z-index: 1;
+   inset: 9% 12%;
+   border: 0.6vmin solid #475569;
+   border-radius: 35%;
+   background:
+      linear-gradient(90deg, transparent 0 15%, #cbd5e1 15% 18%, transparent 18% 82%, #cbd5e1 82% 85%, transparent 85%),
+      linear-gradient(145deg, #cbd5e1, #64748b 58%, #94a3b8);
+   box-shadow: inset 0 0 1.2vmin #0f172a80;
+}
+
+.wing {
+   width: 20%;
+   height: 30%;
+   top: 41%;
+   left: 23%;
+   z-index: 2;
+   transform: rotate(-10deg);
+   transform-origin: top right;
+   border: 0.7vmin solid #334155;
+   border-radius: 70% 12% 65% 18%;
+   background:
+      radial-gradient(circle at 23% 20%, #e0f2fe 0 3%, #475569 3.5% 6%, transparent 6.5%),
+      linear-gradient(145deg, #e2e8f0 0%, #94a3b8 38%, #475569 78%);
+   box-shadow: inset 0 0 0 0.5vmin #cbd5e1, 0 0 1.2vmin #22d3ee45;
+   transition: transform 450ms ease, filter 450ms ease;
+}
+
+.wing::before {
+   content: "";
+   position: absolute;
+   width: 23%;
+   height: 23%;
+   top: 12%;
+   left: 72%;
+   border: 0.55vmin solid #334155;
+   border-radius: 50%;
+   background: radial-gradient(circle at 35% 30%, #f8fafc, #94a3b8 48%, #475569 70%);
+   box-shadow: inset 0 0 0 0.35vmin #cbd5e1, 0 0 0.7vmin #22d3ee80;
+}
+
+.wing::after {
+   content: "";
+   position: absolute;
+   width: 68%;
+   height: 12%;
+   top: 63%;
+   left: 14%;
+   transform: rotate(-32deg);
+   border-top: 0.45vmin solid #334155;
+   border-bottom: 0.35vmin solid #cbd5e1;
+   background: #64748b70;
+}
+
+.wing + .wing {
+   left: auto;
+   right: 43%;
+   transform: scaleX(-1) rotate(-10deg);
+}
+
+/* ROBOT HELMET, GLASS VISOR, AND FACE */
+.head {
+   width: 22%;
+   height: 21%;
+   top: 14%;
+   left: 50%;
+   z-index: 5;
+   transform: translate(-50%, 0);
+   border: 0.7vmin solid #334155;
+   border-radius: 42% 42% 35% 35%;
+   background:
+      radial-gradient(circle at 13% 25%, #f8fafc 0 2%, #475569 2.5% 4%, transparent 4.5%),
+      radial-gradient(circle at 87% 25%, #f8fafc 0 2%, #475569 2.5% 4%, transparent 4.5%),
+      linear-gradient(135deg, #e2e8f0, #94a3b8 46%, #475569);
+   box-shadow: inset 0 0 0 0.6vmin #cbd5e1, 0 0 1.5vmin #22d3ee70;
+   clip-path: polygon(0 13%, 8% 2%, 92% 2%, 100% 13%, 100% 500%, 0 500%);
+}
+
+.head::before {
+   content: "";
+   position: absolute;
+   width: 40%;
+   height: 120%;
+   top: 80%;
+   left: 50%;
+   transform: translate(-50%, 0);
+   border-radius: 0 0 100% 100% / 30%;
+   background:
+      repeating-linear-gradient(to bottom, transparent 0 18%, #334155 18% 22%, #cbd5e1 22% 26%, transparent 26% 50%),
+      linear-gradient(90deg, #64748b, #cbd5e1 50%, #64748b);
+}
+
+.visor {
+   width: 88%;
+   height: 38%;
+   top: 34%;
+   left: 50%;
+   z-index: 1;
+   transform: translateX(-50%);
+   border: 0.7vmin solid #334155;
+   border-radius: 38% 38% 30% 30%;
+   background: linear-gradient(135deg, #67e8f966, #0284c766 55%, #1e1b4b88);
+   box-shadow: inset 0 0 1.2vmin #e0f2fe, 0 0 1.3vmin #22d3ee80;
+}
+
+.visor::after {
+   content: "";
+   position: absolute;
+   width: 24%;
+   height: 18%;
+   top: 15%;
+   left: 13%;
+   transform: rotate(-28deg);
+   border-radius: 50%;
+   background: #e0f2feaa;
+}
+
+.eye {
+   width: 12%;
+   height: 20%;
+   top: 43%;
+   left: 50%;
+   z-index: 2;
+   transform: translate(-50%, 0) translate(-2.5vmin, 0);
+   border-radius: 45%;
+   background: #ecfeff;
+   box-shadow:
+      5vmin 0 #ecfeff,
+      0 0 1vmin 0.5vmin var(--cyan),
+      5vmin 0 1vmin 0.5vmin var(--cyan);
+   animation: eye-glow 2s ease-in-out infinite alternate;
+}
+
+.beak {
+   width: 4vmin;
+   height: 3vmin;
+   top: 61%;
+   left: 50%;
+   z-index: 3;
+   border-top: 1.5vmin solid transparent;
+   border-bottom: 1.5vmin solid transparent;
+   border-left: 4vmin solid var(--orange1);
+   filter: drop-shadow(0 0 0.5vmin #fb923c);
+}
+
+.red {
+   width: 2.5vmin;
+   height: 4vmin;
+   top: 61%;
+   left: 50%;
+   z-index: 3;
+   transform: translate(-100%, 0);
+   border-radius: 100% / 100% 0 100% 100%;
+   background: var(--orange1);
+}
+
+/* EXISTING HAT BECOMES THE HELMET CREST */
+.hat-bottom {
+   width: 31%;
+   height: 7%;
+   top: 16%;
+   left: 50%;
+   z-index: 7;
+   transform: translate(-50%, 0);
+   border: 0.6vmin solid #334155;
+   border-radius: 50%;
+   background: linear-gradient(#cbd5e1, #64748b);
+   box-shadow: 0 0 1vmin #22d3ee80;
+}
+
+.hat-top {
+   width: 20%;
+   height: 16%;
+   top: 5%;
+   left: 50%;
+   z-index: 6;
+   transform: translate(-50%, 0);
+   border: 0.7vmin solid #334155;
+   border-radius: 48% 48% 22% 22%;
+   background: linear-gradient(120deg, #e2e8f0, #64748b 60%, #cbd5e1);
+   box-shadow: inset 0 -3vmin #475569, 0 0 1.2vmin #22d3ee80;
+   transition: transform 400ms ease, filter 400ms ease;
+}
+
+.hat-top::before {
+   content: "";
+   position: absolute;
+   width: 40%;
+   height: 1.5vmin;
+   bottom: 1.5vmin;
+   left: 50%;
+   transform: translate(-50%, 0);
+   border: 0.4vmin solid #164e63;
+   border-radius: 1vmin;
+   background: var(--cyan);
+   box-shadow: 0 0 1vmin var(--cyan);
+}
+
+/* ANTENNA AND CHEST POWER CORE ACCESSORIES */
+.antenna {
+   width: 1.5%;
+   height: 12%;
+   top: 4%;
+   left: 50%;
+   z-index: 9;
+   transform: translateX(-50%);
+   border-radius: 1vmin;
+   background: linear-gradient(90deg, #475569, #e2e8f0, #475569);
+}
+
+.antenna::before {
+   content: "";
+   position: absolute;
+   width: 3.5vmin;
+   height: 3.5vmin;
+   top: -2.7vmin;
+   left: 50%;
+   transform: translateX(-50%);
+   border: 0.5vmin solid #bae6fd;
+   border-radius: 50%;
+   background: radial-gradient(circle at 35% 30%, #fff, #22d3ee 45%, #2563eb);
+   box-shadow: 0 0 1.5vmin #22d3ee;
+   animation: antenna-pulse 1.8s ease-in-out infinite;
+}
+
+.power-core {
+   width: 10%;
+   height: 10%;
+   top: 56%;
+   left: 50%;
+   z-index: 8;
+   transform: translateX(-50%);
+   border: 0.7vmin solid #334155;
+   border-radius: 50%;
+   background: radial-gradient(circle, #ecfeff 0 12%, #22d3ee 32%, #2563eb 72%, #172554 100%);
+   box-shadow: 0 0 1.2vmin 0.5vmin #22d3ee, inset 0 0 0.8vmin #fff;
+   animation: core-pulse 2.2s ease-in-out infinite;
+}
+
+.power-core::before {
+   content: "";
+   position: absolute;
+   inset: -35%;
+   border: 0.5vmin solid #67e8f9;
+   border-radius: 50%;
+   box-shadow: 0 0 0.8vmin #22d3ee;
+}
+
+.power-core::after {
+   content: "";
+   position: absolute;
+   width: 18%;
+   height: 18%;
+   top: 15%;
+   left: 20%;
+   border-radius: 50%;
+   background: white;
+   box-shadow: 0 0 0.7vmin white;
+}
+
+/* ORIGINAL LEGS AND 13-PIECE TAIL, RECOLORED AS ENERGY PANELS */
+.leg {
+   width: 3%;
+   height: 21%;
+   top: 79%;
+   left: 50%;
+   transform: translate(-50%, 0) translate(-4vmin, 0);
+   border: 0.35vmin solid #7c2d12;
+   border-radius: 5vmin / 50%;
+   background-image:
+      linear-gradient(to bottom, transparent 0 44%, #334155 44% 48%, #cbd5e1 48% 53%, #334155 53% 57%, transparent 57%),
+      repeating-linear-gradient(transparent 0 10%, #7c2d1240 0 11%),
+      linear-gradient(90deg, #c2410c, #fb923c 45%, #c2410c);
+}
+
+.leg + .leg {
+   transform: translate(-50%, 0) translate(4vmin, 0);
+}
+
+.leg::before,
+.leg::after {
+   content: "";
+   position: absolute;
+   width: 80%;
+   height: 35%;
+   left: 50%;
+   bottom: 0;
+   transform: translate(-50%, 0) rotate(30deg);
+   transform-origin: 50% 0;
+   border-radius: 5vmin;
+   background: var(--orange1);
+}
+
+.leg::after {
+   transform: translate(-50%, 0) rotate(-30deg);
+}
+
+.tail {
+   width: 10%;
+   height: 40%;
+   top: 30%;
+   left: 50%;
+   transform: translate(-50%, 0);
+   transform-origin: 50% 100%;
+   overflow: hidden;
+   border: 0.7vmin solid #334155;
+   border-radius: 100% / 30% 30% 170% 170%;
+   background: linear-gradient(145deg, #22d3ee, #2563eb 58%, #312e81);
+   box-shadow: inset 0 0 0 0.5vmin #bfdbfe, 0 0 1vmin #22d3ee80;
+   transition: filter 400ms ease;
+}
+
+.tail::before {
+   content: "";
+   position: absolute;
+   width: 18%;
+   height: 75%;
+   top: 10%;
+   left: 41%;
+   border-radius: 1vmin;
+   background: linear-gradient(transparent, #e0f2fe, transparent);
+   box-shadow: 0 0 0.8vmin #22d3ee;
+}
+
+.tail:nth-child(odd) {
+   background: linear-gradient(145deg, #67e8f9, #0891b2 58%, #164e63);
+}
+
+.tail:nth-child(even) {
+   background: linear-gradient(145deg, #c4b5fd, #6366f1 58%, #312e81);
+}
+
+.tail:nth-child(1) { transform: translate(-50%, 0) rotate(0); }
+.tail:nth-child(2) { transform: translate(-50%, 0) rotate(17deg); }
+.tail:nth-child(3) { transform: translate(-50%, 0) rotate(34deg); }
+.tail:nth-child(4) { transform: translate(-50%, 0) rotate(51deg); }
+.tail:nth-child(5) { transform: translate(-50%, 0) rotate(68deg); }
+.tail:nth-child(6) { transform: translate(-50%, 0) rotate(85deg); }
+.tail:nth-child(7) { transform: translate(-50%, 0) rotate(102deg); }
+.tail:nth-child(8) { transform: translate(-50%, 0) rotate(-17deg); }
+.tail:nth-child(9) { transform: translate(-50%, 0) rotate(-34deg); }
+.tail:nth-child(10) { transform: translate(-50%, 0) rotate(-51deg); }
+.tail:nth-child(11) { transform: translate(-50%, 0) rotate(-68deg); }
+.tail:nth-child(12) { transform: translate(-50%, 0) rotate(-85deg); }
+.tail:nth-child(13) { transform: translate(-50%, 0) rotate(-102deg); }
+
+/* HOVER, MOTION, AND ACCESSIBILITY */
+.cartoon:hover .hat-top {
+   transform: translate(-50%, 0) rotate(5deg);
+   filter: brightness(1.15);
+}
+
+.cartoon:hover .wing {
+   filter: brightness(1.3);
+}
+
+.cartoon:hover .wing:hover {
+   transform: rotate(-16deg);
+}
+
+.cartoon:hover .wing + .wing:hover {
+   transform: scaleX(-1) rotate(-16deg);
+}
+
+.cartoon:hover .tail {
+   filter: brightness(1.25);
+}
+
+@keyframes robot-float {
+   0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+   50% { transform: translate(-50%, -50%) translateY(-0.9vmin); }
+}
+
+@keyframes eye-glow {
+   from { filter: brightness(0.9); }
+   to { filter: brightness(1.35); }
+}
+
+@keyframes core-pulse {
+   0%, 100% { filter: brightness(0.9); }
+   50% { filter: brightness(1.35); }
+}
+
+@keyframes antenna-pulse {
+   0%, 100% { filter: brightness(0.85); }
+   50% { filter: brightness(1.5); }
+}
+
+@media (max-height: 520px) {
+   .cartoon {
+      width: min(56vmin, 460px);
+      height: min(56vmin, 460px);
+   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+   *,
+   *::before,
+   *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+   }
+}
